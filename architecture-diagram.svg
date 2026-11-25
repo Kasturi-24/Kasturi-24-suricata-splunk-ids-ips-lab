@@ -1,0 +1,87 @@
+<svg viewBox="0 0 1200 720" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#4a5568"/>
+    </marker>
+    <marker id="arrowRed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#c53030"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="720" fill="#f7fafc"/>
+
+  <!-- Title -->
+  <text x="600" y="42" text-anchor="middle" font-size="26" font-weight="700" fill="#1a202c">Home SOC Lab — Detection &amp; Prevention Pipeline</text>
+  <text x="600" y="68" text-anchor="middle" font-size="14" fill="#718096">VMware Bridged Network · Suricata (IDS/IPS) · Splunk SIEM</text>
+
+  <!-- Kali box -->
+  <rect x="60" y="140" width="220" height="130" rx="10" fill="#feebc8" stroke="#dd6b20" stroke-width="2"/>
+  <text x="170" y="175" text-anchor="middle" font-size="17" font-weight="700" fill="#7b341e">Kali Linux</text>
+  <text x="170" y="198" text-anchor="middle" font-size="13" fill="#7b341e">Attacker</text>
+  <text x="170" y="222" text-anchor="middle" font-size="12" fill="#7b341e">Nmap SYN Scan</text>
+  <text x="170" y="242" text-anchor="middle" font-size="12" fill="#7b341e">Hydra SSH Brute-Force</text>
+  <text x="170" y="262" text-anchor="middle" font-size="11" fill="#975a16">192.168.1.0/24</text>
+
+  <!-- Ubuntu box -->
+  <rect x="450" y="120" width="300" height="220" rx="10" fill="#c6f6d5" stroke="#2f855a" stroke-width="2"/>
+  <text x="600" y="152" text-anchor="middle" font-size="17" font-weight="700" fill="#22543d">Ubuntu VM</text>
+  <text x="600" y="174" text-anchor="middle" font-size="13" fill="#22543d">Sensor + Enforcement Point</text>
+  <text x="600" y="200" text-anchor="middle" font-size="12" fill="#22543d">Promiscuous Mode (ens33)</text>
+  <text x="600" y="220" text-anchor="middle" font-size="12" fill="#22543d">Suricata IDS/IPS Engine</text>
+  <text x="600" y="240" text-anchor="middle" font-size="12" fill="#22543d">NFQUEUE Inline Mode</text>
+  <text x="600" y="260" text-anchor="middle" font-size="12" fill="#22543d">Custom Detection Rules</text>
+  <text x="600" y="280" text-anchor="middle" font-size="12" fill="#22543d">eve.json Log Output</text>
+  <text x="600" y="308" text-anchor="middle" font-size="11" fill="#276749">192.168.1.0/24</text>
+
+  <!-- Windows box -->
+  <rect x="920" y="140" width="220" height="130" rx="10" fill="#e2e8f0" stroke="#4a5568" stroke-width="2"/>
+  <text x="1030" y="175" text-anchor="middle" font-size="17" font-weight="700" fill="#2d3748">Windows 10</text>
+  <text x="1030" y="198" text-anchor="middle" font-size="13" fill="#2d3748">Victim (IDS scenario)</text>
+  <text x="1030" y="222" text-anchor="middle" font-size="12" fill="#4a5568">Detect-only</text>
+  <text x="1030" y="242" text-anchor="middle" font-size="12" fill="#4a5568">(not inline w/ Suricata)</text>
+  <text x="1030" y="262" text-anchor="middle" font-size="11" fill="#4a5568">192.168.1.0/24</text>
+
+  <!-- Arrows Kali -> Ubuntu -->
+  <line x1="280" y1="200" x2="440" y2="200" stroke="#4a5568" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="360" y="190" text-anchor="middle" font-size="11" fill="#4a5568">attack traffic</text>
+
+  <!-- Arrows Ubuntu -> Windows (sniffed only, dashed) -->
+  <line x1="750" y1="200" x2="910" y2="200" stroke="#4a5568" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrow)"/>
+  <text x="830" y="190" text-anchor="middle" font-size="11" fill="#4a5568">observed via</text>
+  <text x="830" y="215" text-anchor="middle" font-size="10" fill="#718096">promiscuous copy</text>
+
+  <!-- Blocked traffic arrow (Ubuntu self, IPS) -->
+  <line x1="330" y1="235" x2="450" y2="235" stroke="#c53030" stroke-width="2.5" marker-end="url(#arrowRed)"/>
+  <text x="390" y="360" text-anchor="middle" font-size="11" fill="#c53030" font-weight="600">✕ BLOCKED (IPS mode, drop rule)</text>
+
+  <!-- Splunk box -->
+  <rect x="450" y="420" width="300" height="160" rx="10" fill="#bee3f8" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="600" y="455" text-anchor="middle" font-size="17" font-weight="700" fill="#2c5282">Splunk SIEM</text>
+  <text x="600" y="480" text-anchor="middle" font-size="12" fill="#2c5282">index=suricata</text>
+  <text x="600" y="502" text-anchor="middle" font-size="12" fill="#2c5282">Alert Triage / SPL Queries</text>
+  <text x="600" y="524" text-anchor="middle" font-size="12" fill="#2c5282">MITRE ATT&amp;CK Mapping</text>
+  <text x="600" y="546" text-anchor="middle" font-size="12" fill="#2c5282">alert.action: blocked / allowed</text>
+
+  <!-- Arrow Ubuntu -> Splunk -->
+  <line x1="600" y1="342" x2="600" y2="415" stroke="#2b6cb0" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="700" y="382" text-anchor="middle" font-size="11" fill="#2b6cb0">eve.json logs</text>
+
+  <!-- Legend / Results panel -->
+  <rect x="60" y="440" width="340" height="230" rx="10" fill="#ffffff" stroke="#cbd5e0" stroke-width="1.5"/>
+  <text x="80" y="470" font-size="14" font-weight="700" fill="#1a202c">Verified Results</text>
+
+  <text x="80" y="498" font-size="12.5" font-weight="700" fill="#dd6b20">Nmap Port Scan (IPS)</text>
+  <text x="80" y="516" font-size="11.5" fill="#2d3748">Default rules missed it → root cause:</text>
+  <text x="80" y="532" font-size="11.5" fill="#2d3748">HOME_NET misconfigured. Custom rule</text>
+  <text x="80" y="548" font-size="11.5" fill="#2d3748">written → 2,248 packets dropped</text>
+
+  <text x="80" y="576" font-size="12.5" font-weight="700" fill="#dd6b20">SSH Brute-Force (IPS)</text>
+  <text x="80" y="594" font-size="11.5" fill="#2d3748">Default ET rule detected instantly.</text>
+  <text x="80" y="610" font-size="11.5" fill="#2d3748">Custom drop rule → Hydra crashed after</text>
+  <text x="80" y="626" font-size="11.5" fill="#2d3748">31/2000 attempts (1,103 pkts dropped)</text>
+
+  <text x="80" y="654" font-size="11" fill="#718096">Suricata v8.0.3 · AF_PACKET (IDS) + NFQUEUE (IPS)</text>
+
+  <!-- Bottom note -->
+  <text x="600" y="700" text-anchor="middle" font-size="11" fill="#a0aec0">Home Lab Project — Detection Engineering &amp; Intrusion Prevention with Suricata + Splunk</text>
+</svg>

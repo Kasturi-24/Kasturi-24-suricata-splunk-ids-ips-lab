@@ -1,0 +1,11 @@
+# Custom Suricata rules — Home SOC Lab Project
+# Rules progress from IDS (alert) to IPS (drop) as documented in README.md
+
+# --- Test rule (early validation of custom rule loading) ---
+alert http any any -> any any (msg:"Custom Suspicious User-Agent Test"; http.user_agent; content:"curl"; nocase; sid:1000001; rev:1;)
+
+# --- Nmap SYN scan detection/prevention (Incident 001) ---
+drop tcp any any -> $HOME_NET any (msg:"CUSTOM Nmap SYN Scan - BLOCKED"; flags:S; flow:stateless; threshold:type both, track by_src, count 20, seconds 60; classtype:attempted-recon; sid:1000002; rev:2;)
+
+# --- SSH brute-force detection/prevention (Incident 002) ---
+drop tcp any any -> $HOME_NET 22 (msg:"CUSTOM SSH Brute Force - BLOCKED"; flags:S; flow:stateless; threshold:type both, track by_src, count 5, seconds 60; classtype:attempted-recon; sid:1000003; rev:1;)
